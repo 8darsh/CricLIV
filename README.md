@@ -1,4 +1,6 @@
 # CricLIV
+![Iphone - x4](https://github.com/8darsh/CricLIV/assets/86889416/73c96c83-0770-4076-8921-ed4915c9ebab)
+
 
 🚀 **CricLIV: Live Cricket Match Application**
 
