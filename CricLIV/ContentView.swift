@@ -6,19 +6,40 @@
 //
 
 import SwiftUI
-
+import Firebase
 struct ContentView: View {
+     var matches: LiveMatch
+    @State private var isSignedIn = false
+    @Binding var username:String
+    @Binding var email:String
+    @Binding var jwtToken: String
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        NavigationStack{
+            if isSignedIn{
+                
+                MainTabbedView(isSignedIn: $isSignedIn, username: $username, email: $email)
+                
+            }else{
+                SignInView(isSignedIn: $isSignedIn,username: $username)
+            }
+            
+        }.navigationBarBackButtonHidden(true)
+//        }.onAppear(perform: {
+//            checkAuth()
+//        })
     }
 }
 
+extension ContentView{
+//    func checkAuth(){
+//        if Auth.auth().currentUser != nil{
+//            isSignedIn = true
+//        }else{
+//            isSignedIn = false
+//        }
+//    }
+}
+
 #Preview {
-    ContentView()
+    ContentView(matches: LiveMatch(matchId: 1, matchNumberVenue: "dsvdf", battingTeam: "ds", battingTeamScore: "dsf", bowlTeam: "sfd", bowlTeamScore: "sfd", liveText: "fgg"), username: .constant("username"), email: .constant(""), jwtToken: .constant(""))
 }
